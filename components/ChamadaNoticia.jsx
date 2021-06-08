@@ -16,14 +16,13 @@ const ChamadaNoticia = ({
   return (
     <Link href={`/${categoria}/${link}`} passHref>
       <a className={calculaTamanhoGrid(posicao)}>
-        <div className="relative group w-full min-h-full rounded overflow-hidden">
+        <div className="relative group w-full rounded overflow-hidden">
           <img
             src={imagemUrl}
             alt={titulo}
             width={imagemLargura}
             height={imagemAltura}
-            style={{ backgroundSize: 'cover' }}
-            className="w-full min-h-full transform transition-all hover:scale-110"
+            className="w-full transform transition-all hover:scale-110"
           />
           <div className="absolute bottom-0 left-0 m-4 space-y-2">
             <p className="text-white text-sm font-bold">{subtitulo}</p>
