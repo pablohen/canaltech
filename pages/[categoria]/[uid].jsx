@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { getNoticia } from '../../libs/prismic';
 import { RichText } from 'prismic-reactjs';
 import Link from 'next/link';
+import MenuPrincipal from './../../components/MenuPrincipal';
 
 const PaginaNoticia = ({ noticia }) => {
   const router = useRouter();
@@ -14,33 +15,37 @@ const PaginaNoticia = ({ noticia }) => {
   const imagemAltura = noticia.data?.imagem?.dimensions?.height;
 
   return (
-    <div className="p-4 space-y-4">
-      <h1 className="text-3xl">{titulo}</h1>
+    <div className="flex flex-col sm:flex-row">
+      <MenuPrincipal />
 
-      <div>
-        <Link href="/" passHref>
-          <a className="pr-2">Home</a>
-        </Link>
-        {categorias &&
-          categorias.map((categoria) => {
-            return (
-              <Link href={`/${categoria}`} passHref key={categoria}>
-                <a className="pr-2">{categoria}</a>
-              </Link>
-            );
-          })}
+      <div className="p-4 space-y-4">
+        <h1 className="text-3xl">{titulo}</h1>
+
+        <div>
+          <Link href="/" passHref>
+            <a className="pr-2">Home</a>
+          </Link>
+          {categorias &&
+            categorias.map((categoria) => {
+              return (
+                <Link href={`/${categoria}`} passHref key={categoria}>
+                  <a className="pr-2">{categoria}</a>
+                </Link>
+              );
+            })}
+        </div>
+
+        {imagemUrl && (
+          <img
+            src={imagemUrl}
+            alt={titulo}
+            width={imagemLargura}
+            height={imagemAltura}
+            className="w-full"
+          />
+        )}
+        <RichText render={corpo} />
       </div>
-
-      {imagemUrl && (
-        <img
-          src={imagemUrl}
-          alt={titulo}
-          width={imagemLargura}
-          height={imagemAltura}
-          className="w-full"
-        />
-      )}
-      <RichText render={corpo} />
     </div>
   );
 };

@@ -1,7 +1,13 @@
+import Link from 'next/link';
+
 const Logo = () => {
   return (
     <div className="w-10">
-      <img src="./logo.png" alt="logo" />
+      <Link href="/" passHref>
+        <a>
+          <img src="/logo.png" alt="logo" />
+        </a>
+      </Link>
     </div>
   );
 };
