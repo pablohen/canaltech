@@ -16,7 +16,7 @@ const ChamadaNoticia = ({
   return (
     <Link href={`/${categoria}/${link}`} passHref>
       <a className={calculaTamanhoGrid(posicao)}>
-        <div className="relative group w-full rounded overflow-hidden">
+        <div className="bg-gray-500 relative w-full rounded overflow-hidden">
           <img
             src={imagemUrl}
             alt={titulo}
