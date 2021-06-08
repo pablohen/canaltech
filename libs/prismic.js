@@ -1,4 +1,4 @@
-import Prismic from 'prismic-javascript';
+import Prismic from '@prismicio/client';
 
 export const API_URL = process.env.API_URL;
 export const API_TOKEN = process.env.API_TOKEN;
@@ -11,7 +11,9 @@ export const getNoticias = async (categoria) => {
     consultaNoticias += `[at(document.tags, ["${categoria}"])]`;
   }
 
-  const res = await client.query(consultaNoticias);
+  const res = await client.query(consultaNoticias, {
+    orderings: '[document.last_publication_date desc]',
+  });
   return res;
 };
 
