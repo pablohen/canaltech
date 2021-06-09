@@ -1,7 +1,7 @@
 const site = `https://${process.env.VERCEL_URL}`;
 const siteName = 'Canaltech';
 const description = 'Clone do Canaltech usando TailwindCSS.';
-const keywords = 'Canaltech, clone, tailwind, css';
+const keywords = 'Canaltech, clone, next, js, tailwind, css';
 
 export default {
   defaultTitle: siteName,
