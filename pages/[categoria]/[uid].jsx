@@ -6,6 +6,7 @@ import MenuPrincipal from './../../components/MenuPrincipal';
 import { sombraTexto } from './../../utils/sombraTexto';
 import { NextSeo } from 'next-seo';
 import { separaDadosNoticia } from './../../utils/separaDadosNoticia';
+import SEO from '../../next-seo.config';
 
 const PaginaNoticia = ({ noticia }) => {
   const router = useRouter();
@@ -23,35 +24,18 @@ const PaginaNoticia = ({ noticia }) => {
 
   const descricao = corpo?.[0]?.text || titulo;
 
-  const openGraph = `images: [
+  const openGraphImages = `images: [
     { url: '${imagemUrl}' },
-  ],`;
+  ],}`;
+
+  console.log(SEO.openGraph);
 
   return (
     <div className="flex flex-col sm:flex-row">
       <NextSeo
         title={titulo}
         description={descricao}
-        openGraph={{
-          type: 'website',
-          url: 'https://www.example.com/page',
-          title: 'Open Graph Title',
-          description: 'Open Graph Description',
-          images: [
-            {
-              url: 'https://www.example.ie/og-image.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Og Image Alt',
-            },
-            {
-              url: 'https://www.example.ie/og-image-2.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Og Image Alt 2',
-            },
-          ],
-        }}
+        openGraph={{ ...SEO.openGraph, openGraphImages }}
       />
 
       <MenuPrincipal />
