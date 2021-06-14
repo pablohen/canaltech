@@ -2,6 +2,7 @@ import { getNoticias } from '../../libs/prismic';
 import ChamadaNoticia from '../../components/ChamadaNoticia';
 import { useRouter } from 'next/router';
 import MenuPrincipal from './../../components/MenuPrincipal';
+import { separaDadosNoticia } from './../../utils/separaDadosNoticia';
 
 const PaginaCategoria = ({ noticias }) => {
   if (!noticias) return <div>Carregando...</div>;
@@ -19,16 +20,26 @@ const PaginaCategoria = ({ noticias }) => {
 
         <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 m-4 h-px">
           {noticias.map((noticia) => {
+            const {
+              key,
+              titulo,
+              subtitulo,
+              link,
+              imagemUrl,
+              imagemLargura,
+              imagemAltura,
+              categorias,
+            } = separaDadosNoticia(noticia);
             return (
               <ChamadaNoticia
-                key={noticia.uid}
-                titulo={noticia.data.titulo}
-                subtitulo={noticia.data.subtitulo}
-                link={noticia.uid}
-                imagemUrl={noticia.data?.imagem?.url}
-                imagemLargura={noticia.data?.imagem?.dimensions?.width}
-                imagemAltura={noticia.data?.imagem?.dimensions?.height}
-                categorias={noticia.tags}
+                key={key}
+                titulo={titulo}
+                subtitulo={subtitulo}
+                link={link}
+                imagemUrl={imagemUrl}
+                imagemLargura={imagemLargura}
+                imagemAltura={imagemAltura}
+                categorias={categorias}
               />
             );
           })}
