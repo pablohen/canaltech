@@ -21,13 +21,11 @@ const PaginaNoticia = ({ noticia }) => {
     dataPublicacao,
   } = separaDadosNoticia(noticia);
 
+  const openGraph = `{ images: [ {url: ${imagemUrl}, alt: ${titulo}, width: ${imagemLargura}, height: ${imagemAltura}} ] }`;
+
   return (
     <div className="flex flex-col sm:flex-row">
-      <NextSeo
-        title={titulo}
-        description={corpo}
-        openGraph={`images: [{url: ${imagemUrl}, alt: ${titulo}, width: ${imagemLargura}, height: ${imagemAltura}}]`}
-      />
+      <NextSeo title={titulo} description={corpo} openGraph={openGraph} />
 
       <MenuPrincipal />
 
