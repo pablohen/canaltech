@@ -6,7 +6,6 @@ import MenuPrincipal from './../../components/MenuPrincipal';
 import { sombraTexto } from './../../utils/sombraTexto';
 import { NextSeo } from 'next-seo';
 import { separaDadosNoticia } from './../../utils/separaDadosNoticia';
-import SEO from '../../next-seo.config';
 
 const PaginaNoticia = ({ noticia }) => {
   const router = useRouter();
@@ -24,18 +23,24 @@ const PaginaNoticia = ({ noticia }) => {
 
   const descricao = corpo?.[0]?.text || titulo;
 
-  const openGraphImages = `images: [
-    { url: '${imagemUrl}' },
-  ],}`;
-
-  console.log(SEO.openGraph);
-
   return (
     <div className="flex flex-col sm:flex-row">
       <NextSeo
         title={titulo}
         description={descricao}
-        openGraph={{ ...SEO.openGraph, openGraphImages }}
+        openGraph={{
+          type: 'website',
+          title: `'${titulo}'`,
+          description: `'${descricao}'`,
+          images: [
+            {
+              url: `'${imagemUrl}'`,
+              width: imagemLargura,
+              height: imagemAltura,
+              alt: `'${titulo}'`,
+            },
+          ],
+        }}
       />
 
       <MenuPrincipal />
@@ -109,7 +114,6 @@ export const getStaticProps = async ({ params }) => {
   const uid = params.uid;
   const res = await getNoticia(uid);
   const noticia = res.results[0];
-  console.log(noticia);
 
   return {
     props: {
