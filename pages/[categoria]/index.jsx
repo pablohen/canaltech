@@ -13,7 +13,7 @@ const PaginaCategoria = ({ noticias }) => {
 
   return (
     <div className="flex flex-col sm:flex-row">
-      <NextSeo title={`Notícias sobre ${categoria}`} />
+      <NextSeo title={categoria} description={`Notícias sobre ${categoria}`} />
 
       <MenuPrincipal />
       <div>

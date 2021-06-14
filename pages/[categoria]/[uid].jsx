@@ -23,7 +23,11 @@ const PaginaNoticia = ({ noticia }) => {
 
   return (
     <div className="flex flex-col sm:flex-row">
-      <NextSeo title={titulo} />
+      <NextSeo
+        title={titulo}
+        description={corpo}
+        openGraph={`images: [{url: ${imagemUrl}, alt: ${titulo}, width: ${imagemLargura}, height: ${imagemAltura}}]`}
+      />
 
       <MenuPrincipal />
 
