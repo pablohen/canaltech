@@ -3,23 +3,28 @@ import { getNoticia } from '../../libs/prismic';
 import { RichText } from 'prismic-reactjs';
 import Link from 'next/link';
 import MenuPrincipal from './../../components/MenuPrincipal';
-import formataData from './../../utils/formataData';
 import { sombraTexto } from './../../utils/sombraTexto';
+import { NextSeo } from 'next-seo';
+import { separaDadosNoticia } from './../../utils/separaDadosNoticia';
 
 const PaginaNoticia = ({ noticia }) => {
   const router = useRouter();
   if (router.isFallback) return <div>Carregando...</div>;
 
-  const { titulo, subtitulo, corpo } = noticia.data;
-  const categorias = noticia.tags;
-  const imagemUrl = noticia.data?.imagem?.url;
-  const imagemLargura = noticia.data?.imagem?.dimensions?.width;
-  const imagemAltura = noticia.data?.imagem?.dimensions?.height;
-  const dataPublicacao = formataData.padrao(noticia.first_publication_date);
-  const dataAtualizacao = formataData.padrao(noticia.last_publication_date);
+  const {
+    titulo,
+    corpo,
+    imagemUrl,
+    imagemLargura,
+    imagemAltura,
+    categorias,
+    dataPublicacao,
+  } = separaDadosNoticia(noticia);
 
   return (
     <div className="flex flex-col sm:flex-row">
+      <NextSeo title={titulo} />
+
       <MenuPrincipal />
 
       <div className="">

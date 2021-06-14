@@ -3,6 +3,7 @@ import ChamadaNoticia from '../../components/ChamadaNoticia';
 import { useRouter } from 'next/router';
 import MenuPrincipal from './../../components/MenuPrincipal';
 import { separaDadosNoticia } from './../../utils/separaDadosNoticia';
+import { NextSeo } from 'next-seo';
 
 const PaginaCategoria = ({ noticias }) => {
   if (!noticias) return <div>Carregando...</div>;
@@ -10,10 +11,10 @@ const PaginaCategoria = ({ noticias }) => {
   const router = useRouter();
   const { categoria } = router.query;
 
-  console.log(noticias);
-
   return (
     <div className="flex flex-col sm:flex-row">
+      <NextSeo title={`Notícias sobre ${categoria}`} />
+
       <MenuPrincipal />
       <div>
         <h1>Categoria: {categoria}</h1>
