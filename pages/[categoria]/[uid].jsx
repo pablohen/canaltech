@@ -23,13 +23,17 @@ const PaginaNoticia = ({ noticia }) => {
 
   const descricao = corpo?.[0]?.text || titulo;
 
-  const openGraph = `{images: [
+  const openGraph = `images: [
     { url: '${imagemUrl}' },
-  ],}`;
+  ],`;
 
   return (
     <div className="flex flex-col sm:flex-row">
-      <NextSeo title={titulo} description={descricao} openGraph={openGraph} />
+      <NextSeo
+        title={titulo}
+        description={descricao}
+        openGraph={{ openGraph }}
+      />
 
       <MenuPrincipal />
 
