@@ -12,7 +12,7 @@ const Home = ({ noticias }) => {
     <div className="flex flex-col sm:flex-row">
       <MenuPrincipal />
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 m-4 h-px">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 m-4 min-h-px h-full">
         {noticias.map((noticia, index) => {
           const {
             key,
