@@ -10,10 +10,11 @@ const PaginaCategoria = ({ noticias }) => {
 
   const router = useRouter();
   const { categoria } = router.query;
+  const descricao = `Notícias sobre ${categoria}`;
 
   return (
     <div className="flex flex-col sm:flex-row">
-      <NextSeo title={categoria} description={`Notícias sobre ${categoria}`} />
+      <NextSeo title={categoria} description={descricao} />
 
       <MenuPrincipal />
       <div>

@@ -21,11 +21,15 @@ const PaginaNoticia = ({ noticia }) => {
     dataPublicacao,
   } = separaDadosNoticia(noticia);
 
-  const openGraph = `{ images: [ {url: ${imagemUrl}, alt: ${titulo}, width: ${imagemLargura}, height: ${imagemAltura}} ] }`;
+  const descricao = corpo?.[0]?.text || titulo;
 
+  const openGraph = `{ images: [ {url: '${imagemUrl}', alt: '${titulo}', width: ${imagemLargura}, height: ${imagemAltura}} ] }`;
+
+  console.log(descricao);
+  console.log(imagemUrl);
   return (
     <div className="flex flex-col sm:flex-row">
-      <NextSeo title={titulo} description={corpo} openGraph={openGraph} />
+      <NextSeo title={titulo} description={descricao} openGraph={openGraph} />
 
       <MenuPrincipal />
 
