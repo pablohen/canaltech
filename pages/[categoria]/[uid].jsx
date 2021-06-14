@@ -30,14 +30,14 @@ const PaginaNoticia = ({ noticia }) => {
         description={descricao}
         openGraph={{
           type: 'website',
-          title: `'${titulo}'`,
-          description: `'${descricao}'`,
+          title: titulo,
+          description: descricao,
           images: [
             {
-              url: `'${imagemUrl}'`,
+              url: imagemUrl,
               width: imagemLargura,
               height: imagemAltura,
-              alt: `'${titulo}'`,
+              alt: titulo,
             },
           ],
         }}
